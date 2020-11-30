@@ -12,9 +12,9 @@
             </mat-card-header>
             <img mat-card-image [src]="playlist.images[0].url" alt="Playlist image">
             
-            <mat-card-actions>
-               <button mat-stroked-button color="primary">Ver</button>
-            </mat-card-actions>
+             <mat-card-actions>
+               <button (click)= "onPlaylistClick( playlist )" mat-raised-button color="primary">Ver Detalles</button>
+            </mat-card-actions> 
           </mat-card>
     </div>
 

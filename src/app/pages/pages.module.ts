@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { SeachComponent } from './seach/seach.component';
 import { MaterialModule } from '../material.module';
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -11,7 +12,8 @@ import { MaterialModule } from '../material.module';
   declarations: [HomeComponent, PlaylistComponent, SeachComponent],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    ComponentsModule
   ],
   exports:[
       HomeComponent
