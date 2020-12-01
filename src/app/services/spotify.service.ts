@@ -13,30 +13,34 @@ export class SpotifyService {
     console.log('Se ubucia el servicio ');
   }
 
+  getQuery( query: string ) {
+
+    const url= `https://api.spotify.com/v1/${ query }`;
+
+    const headers = new HttpHeaders({
+      'Authorization':'Bearer BQDGvQj-EbUDXNDXEshGnIWTwywCJjegiELKQbpyevikLmdjwdwYV4pBSeVvnLJUrpJT0UbJXdB9irFqspKJfRBTG7n4Q-nK-5SZkVESX5vHrRTJzbjS25quw28WTzvAbZ8XMu-Vl3zmu18bJYkTPbO_3GIRXI9nwnhp_dzk-OqmuFqdMn3lWiW0EwpF'
+     });
+
+    return this.http.get( url, { headers });     
+  }
+
   getUser() {
     
-    const headers = new HttpHeaders({
-       'Authorization':'Bearer BQDMluzfKT7mY1zBDgdh6YSde-Yg2sDEvyKq7WbodIdr4DucRN3S7FR_sX-SCJh0TxfDo7c7ptoQAPAOGW6qLTfMw875QRxmJhXX92Gr5k99uJQL5rDSqjIBENJgeECPBAq8sbI2YbHxihcfBTvSS9tM2AbhAwpwCumqKhow06iHaxsZVlPXI1xF6H7m'
-      });
-     return this.http.get('https://api.spotify.com/v1/me/', { headers });
+    return this.getQuery( 'me' );
+    
   }
 
   getPlaylists() {
     
-    const headers = new HttpHeaders({
-      'Authorization':'Bearer BQDMluzfKT7mY1zBDgdh6YSde-Yg2sDEvyKq7WbodIdr4DucRN3S7FR_sX-SCJh0TxfDo7c7ptoQAPAOGW6qLTfMw875QRxmJhXX92Gr5k99uJQL5rDSqjIBENJgeECPBAq8sbI2YbHxihcfBTvSS9tM2AbhAwpwCumqKhow06iHaxsZVlPXI1xF6H7m'
-     });
-     return this.http.get('https://api.spotify.com/v1/me/playlists', { headers });
+      return this.getQuery( 'me/playlists' )
+     
   }
 
   getPlaylistById( id: string) {
-    const headers = new HttpHeaders({
-      'Authorization':'Bearer BQDMluzfKT7mY1zBDgdh6YSde-Yg2sDEvyKq7WbodIdr4DucRN3S7FR_sX-SCJh0TxfDo7c7ptoQAPAOGW6qLTfMw875QRxmJhXX92Gr5k99uJQL5rDSqjIBENJgeECPBAq8sbI2YbHxihcfBTvSS9tM2AbhAwpwCumqKhow06iHaxsZVlPXI1xF6H7m'
-     });
-    return this.http.get(`https://api.spotify.com/v1/playlists/${ id }/tracks`, { headers })
-            .pipe( map( data => {
-              return data[ 'items' ];
-            })) ;
 
+    return this.getQuery( `playlists/${ id }/tracks`)
+        .pipe( map( data => {
+          return data['items'];
+        }));
   }
 }
