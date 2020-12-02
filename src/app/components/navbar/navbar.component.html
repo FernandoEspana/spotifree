@@ -1,9 +1,12 @@
  <mat-toolbar color="primary">
     <img src="../../../assets/images/banner-ico.png" alt="Icon" width="30px" height="30px" >
     <span>SpotyFree</span>
+    <a mat-flat-button color="primary" routerLink ="home" ><span>Home</span></a>
+    <a mat-flat-button color="primary" routerLink ="search" ><span>Search</span></a>
+   
     <div class="profile">
         <span>{{email}}</span>
         <span>Seguidores: {{followers}}</span>
-        <img class="portrait" [src]="urlImgProfile" width="40px" heigth="40px"  >
+        <img class="portrait" [src]="urlImgProfile" width="30px" heigth="30px"  >
     </div>
 </mat-toolbar> 

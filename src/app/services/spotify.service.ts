@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+
 import { map } from 'rxjs/operators';
 
 
@@ -10,7 +11,7 @@ import { map } from 'rxjs/operators';
 export class SpotifyService {
  
   constructor(private http: HttpClient) { 
-    console.log('Se ubucia el servicio ');
+    
   }
 
   getQuery( query: string ) {
@@ -18,7 +19,7 @@ export class SpotifyService {
     const url= `https://api.spotify.com/v1/${ query }`;
 
     const headers = new HttpHeaders({
-      'Authorization':'Bearer BQDGvQj-EbUDXNDXEshGnIWTwywCJjegiELKQbpyevikLmdjwdwYV4pBSeVvnLJUrpJT0UbJXdB9irFqspKJfRBTG7n4Q-nK-5SZkVESX5vHrRTJzbjS25quw28WTzvAbZ8XMu-Vl3zmu18bJYkTPbO_3GIRXI9nwnhp_dzk-OqmuFqdMn3lWiW0EwpF'
+      'Authorization':'Bearer BQBeDXKtgC_1D3Q3m1DIp88Rd0Fr963NvmVqjFHeV0ugeudT07BqDkI3inF3pAvoNuoF8o60KeXjLyY9jSKNVoYNRZtgJkUU3JPk-gGqEAm6Ew3nA7nHM2sW4dEAX3sY9HIIfGTDsHXokt-mQgPjx5mqYszfC1ibValExh2aK3z_oZA4LYGKVNp0Btrm'
      });
 
     return this.http.get( url, { headers });     
@@ -32,7 +33,7 @@ export class SpotifyService {
 
   getPlaylists() {
     
-      return this.getQuery( 'me/playlists' )
+      return this.getQuery( 'me/playlists' );
      
   }
 
@@ -42,5 +43,15 @@ export class SpotifyService {
         .pipe( map( data => {
           return data['items'];
         }));
+  }
+
+
+  //https://api.spotify.com/v1/search?q=new%20divide&type=track
+  getTrack( search: string ) {
+
+    return this.getQuery( `search?q=${ search }&type=track&limit=5` );
+     
+     
+
   }
 }

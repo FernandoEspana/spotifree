@@ -19,15 +19,6 @@ export class PlaylistComponent implements OnInit {
     //Obtain playlist id from activetes route from url
      this.id = this.activateRoute.snapshot.params.id;
 
-     //console.log( this.id );
-
-    // this.spotify.getPlaylistById( id ).subscribe( (data: any) => {
-      
-    //   this.tracks = data;
-    //   console.log( this.tracks );
-    // })
-    
-
   }
 
 }

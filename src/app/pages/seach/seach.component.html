@@ -1,1 +1,31 @@
-<p>seach works!</p>
+<form class="search-form" width="100%">
+    <mat-form-field class="example-full-width">
+      <mat-label>Buscar canción</mat-label>
+      <input matInput
+             #track
+             placeholder="Ingrese nombre de la cancion" 
+             (keyup)="buscar(track.value)">
+    </mat-form-field>
+ </form>
+ <div class="row playlist-grid">
+  <div *ngFor="let song of songs" class="col-xs-12 col-md-2">
+      <mat-card class="playlist-card">
+          <mat-card-header>
+            <div mat-card-avatar class="header-image"></div>
+            <mat-card-title>{{song.name}}</mat-card-title>
+           
+          </mat-card-header>
+          <img mat-card-image [src]="song.album.images[0].url" alt="Playlist image">
+          
+           <mat-card-actions>
+             <div>
+              <span><b>Album: </b>{{ song.album.name }}</span>
+             </div>
+             <div>
+              <span><b>Artista: </b>{{ song.artists[0].name }}</span>
+             </div>
+           </mat-card-actions> 
+        </mat-card>
+  </div>
+
+</div>

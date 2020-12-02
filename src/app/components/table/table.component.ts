@@ -12,7 +12,7 @@ export class TableComponent implements AfterViewInit, OnInit {
 
   @Input() id: string;
 
-  displayedColumns: string[] = [ 'name', 'artists[0].name' ];
+  displayedColumns: string[] = [ 'img', 'name', 'artists[0].name', 'playback' ];
   dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
